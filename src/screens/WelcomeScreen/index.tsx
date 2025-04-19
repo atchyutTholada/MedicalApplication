@@ -10,11 +10,11 @@ import {
 
 const WelcomeScreen = ({navigation}) => {
   const handleLogin = () => {
-    navigation.navigate('Onboarding'); // Navigate to Onboarding Screen
+    navigation.navigate('Onboarding'); // Navigate to Login Screen
   };
 
   const handleSignUp = () => {
-    navigation.navigate('Onboarding'); // Navigate to Onboarding Screen
+    navigation.navigate('Onboarding'); // Navigate to SignUp Screen
   };
 
   return (

@@ -11,6 +11,8 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {COLORS} from '../../constants/colors';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {LinearGradient, Stop} from 'react-native-svg';
+import SvgLinearGradientButton from '../../components/svgButton';
 
 type RootStackParamList = {
   Onboarding: undefined;
@@ -34,19 +36,22 @@ const slides = [
   {
     id: '1',
     title: 'Choose Your Doctor',
-    subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing \n elit, sed do eiusmod tempor incididunt ut \n labore et dolore magna aliqua.',
+    subtitle:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing \n elit, sed do eiusmod tempor incididunt ut \n labore et dolore magna aliqua.',
     image: require('../../assets/images/FirstSlideImage.png'), // Ensure this file exists
   },
   {
     id: '2',
     title: 'Schedule Your Appointments',
-    subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing \n elit, sed do eiusmod tempor incididunt ut \n labore et dolore magna aliqua.',
+    subtitle:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing \n elit, sed do eiusmod tempor incididunt ut \n labore et dolore magna aliqua.',
     image: require('../../assets/images/SecondSlideImage.png'), // Ensure this file exists
   },
   {
     id: '3',
     title: 'Check Your Medical History',
-    subtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing \n elit, sed do eiusmod tempor incididunt ut \n labore et dolore magna aliqua.',
+    subtitle:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing \n elit, sed do eiusmod tempor incididunt ut \n labore et dolore magna aliqua.',
     image: require('../../assets/images/ThirdSlideImage.png'), // Ensure this file exists
   },
 ];
@@ -64,10 +69,10 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({navigation}) => {
   };
 
   const handleDone = () => {
-    navigation.replace('Login'); // Navigate to Login Screen after Onboarding
+    navigation.replace('Login'); // Navigate to Home Screen after Onboarding
   };
 
-  const renderItem = ({item}: {item: typeof slides[0]}) => (
+  const renderItem = ({item}: {item: (typeof slides)[0]}) => (
     <View style={styles.slide}>
       <Image source={item.image} style={styles.image} />
       <Text style={styles.title}>{item.title}</Text>
@@ -90,9 +95,7 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({navigation}) => {
         pagingEnabled
         showsHorizontalScrollIndicator={false}
         onScroll={e => {
-          const index = Math.round(
-            e.nativeEvent.contentOffset.x / width,
-          );
+          const index = Math.round(e.nativeEvent.contentOffset.x / width);
           setCurrentIndex(index);
         }}
         ref={flatListRef}
@@ -102,20 +105,16 @@ const OnboardingScreen: React.FC<OnboardingScreenProps> = ({navigation}) => {
           {slides.map((_, index) => (
             <View
               key={index}
-              style={[
-                styles.dot,
-                currentIndex === index && styles.activeDot,
-              ]}
+              style={[styles.dot, currentIndex === index && styles.activeDot]}
             />
           ))}
         </View>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={handleNext}>
-          <Text style={styles.buttonText}>
-            {currentIndex === slides.length - 1 ? 'Get Started' : 'Next'}
-          </Text>
-        </TouchableOpacity>
+        <SvgLinearGradientButton
+          title={currentIndex === slides.length - 1 ? 'Get Started' : 'Next'}
+          onPress={handleNext}
+          width={300}
+          height={60}
+        />
       </View>
     </View>
   );
@@ -148,19 +147,19 @@ const styles = StyleSheet.create({
     width: 450,
     height: 450,
     resizeMode: 'contain',
-    bottom:200
+    bottom: 200,
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
     color: COLORS.blue,
     textAlign: 'center',
-    bottom:200
+    bottom: 200,
+    fontFamily: 'LeagueSpartan-Bold',
   },
   subtitle: {
     fontSize: 11,
     color: COLORS.gray,
-    bottom:150,
+    bottom: 150,
     textAlign: 'center',
   },
   footer: {
@@ -189,7 +188,7 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 60,
     borderRadius: 20,
-    top:30
+    top: 30,
   },
   buttonText: {
     color: COLORS.white,

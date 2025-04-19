@@ -9,6 +9,11 @@ import {
 import styles from './style';
 
 const LoginScreen = ({navigation}: {navigation: any}) => {
+  const handleLogin = () => {
+    // Navigate to the Home Screen
+    navigation.navigate('Home');
+  };
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -41,7 +46,7 @@ const LoginScreen = ({navigation}: {navigation: any}) => {
         <TouchableOpacity>
           <Text style={styles.forgotPassword}>Forget Password</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.loginButton}>
+        <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
           <Text style={styles.loginButtonText}>Log In</Text>
         </TouchableOpacity>
         <Text style={styles.orText}>or sign up with</Text>

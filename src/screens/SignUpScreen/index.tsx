@@ -57,7 +57,7 @@ const SignUpScreen = ({navigation}: {navigation: any}) => {
             <Text style={styles.link}>Terms of Use</Text> and{' '}
             <Text style={styles.link}>Privacy Policy</Text>.
           </Text>
-          <TouchableOpacity style={styles.signUpButton}>
+          <TouchableOpacity style={styles.signUpButton} onPress={() => navigation.navigate('Home')}>
             <Text style={styles.signUpButtonText}>Sign Up</Text>
           </TouchableOpacity>
           <Text style={styles.orText}>or sign up with</Text>
