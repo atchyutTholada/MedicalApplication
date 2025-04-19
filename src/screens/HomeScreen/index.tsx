@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, Text, StyleSheet, SafeAreaView, Image} from 'react-native';
+import {View, Text, StyleSheet, SafeAreaView, Image, TouchableOpacity} from 'react-native'; // Added TouchableOpacity
 import {COLORS} from '../../../src/constants/colors';
 import {Iconsvg, Xml} from '../../assets/svgicon';
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}: {navigation: any}) => { // Added navigation prop
   return (
     <SafeAreaView style={styles.container}>
       <View
@@ -174,14 +174,16 @@ const HomeScreen = () => {
           }}>
           Specialties
         </Text>
-        <Text
-          style={{
-            color: COLORS.blue,
-            textDecorationLine: 'underline',
-            right: 18,
-          }}>
-          See all
-        </Text>
+        <TouchableOpacity onPress={() => navigation.navigate('SpecialitiesScreen')}>
+          <Text
+            style={{
+              color: COLORS.blue,
+              textDecorationLine: 'underline',
+              right: 18,
+            }}>
+            See all
+          </Text>
+        </TouchableOpacity>
       </View>
 
       {/* Separator Line */}
