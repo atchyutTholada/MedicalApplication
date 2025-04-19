@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   StyleSheet,
 } from 'react-native';
+import {Iconsvg, Xml} from '../../assets/svgicon';
 
 const SignUpScreen = ({navigation}: {navigation: any}) => {
   return (
@@ -30,9 +31,7 @@ const SignUpScreen = ({navigation}: {navigation: any}) => {
               placeholderTextColor="#B0BEC5"
               secureTextEntry
             />
-            <TouchableOpacity>
-              {/* Add eye icon manually */}
-            </TouchableOpacity>
+            <TouchableOpacity>{/* Add eye icon manually */}</TouchableOpacity>
           </View>
           <Text style={styles.label}>Email</Text>
           <TextInput
@@ -57,19 +56,39 @@ const SignUpScreen = ({navigation}: {navigation: any}) => {
             <Text style={styles.link}>Terms of Use</Text> and{' '}
             <Text style={styles.link}>Privacy Policy</Text>.
           </Text>
-          <TouchableOpacity style={styles.signUpButton} onPress={() => navigation.navigate('Home')}>
+          <TouchableOpacity
+            style={styles.signUpButton}
+            onPress={() => navigation.navigate('Home')}>
             <Text style={styles.signUpButtonText}>Sign Up</Text>
           </TouchableOpacity>
           <Text style={styles.orText}>or sign up with</Text>
           <View style={styles.socialIcons}>
             <TouchableOpacity style={styles.iconCircle}>
-              <Text>G</Text>
+              <Iconsvg
+                width="32"
+                height="32"
+                fill="none"
+                xml={Xml.GoogleIcon}
+                style={{marginHorizontal: 1}}
+              />
             </TouchableOpacity>
             <TouchableOpacity style={styles.iconCircle}>
-              <Text>F</Text>
+              <Iconsvg
+                width="32"
+                height="32"
+                fill="none"
+                xml={Xml.FacebookIcon}
+                style={{marginHorizontal: 1}}
+              />
             </TouchableOpacity>
             <TouchableOpacity style={styles.iconCircle}>
-              <Text>🔒</Text>
+              <Iconsvg
+                width="32"
+                height="32"
+                fill="none"
+                xml={Xml.FingerPrint}
+                style={{marginHorizontal: 1}}
+              />
             </TouchableOpacity>
           </View>
           <Text style={styles.footerText}>

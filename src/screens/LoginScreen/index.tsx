@@ -7,12 +7,16 @@ import {
   SafeAreaView,
 } from 'react-native';
 import styles from './style';
+import { Iconsvg, Xml } from '../../assets/svgicon';
 
 const LoginScreen = ({navigation}: {navigation: any}) => {
   const handleLogin = () => {
     // Navigate to the Home Screen
     navigation.navigate('Home');
   };
+  const handleForget = () =>{
+    navigation.navigate('SetPasswordScreen'); // Navigate to Forgot Password Screen
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -43,7 +47,7 @@ const LoginScreen = ({navigation}: {navigation: any}) => {
             {/* You can manually add the eye icon here */}
           </TouchableOpacity>
         </View>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={handleForget}>
           <Text style={styles.forgotPassword}>Forget Password</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.loginButton} onPress={handleLogin}>
@@ -52,13 +56,31 @@ const LoginScreen = ({navigation}: {navigation: any}) => {
         <Text style={styles.orText}>or sign up with</Text>
         <View style={styles.socialIcons}>
           <TouchableOpacity style={styles.iconCircle}>
-            <Text>G</Text>
+            <Iconsvg
+                      width="32"
+                      height="32"
+                      fill="none"
+                      xml={Xml.GoogleIcon}
+                      style={{marginHorizontal: 1}}
+                    />
           </TouchableOpacity>
           <TouchableOpacity style={styles.iconCircle}>
-            <Text>F</Text>
+            <Iconsvg
+                      width="32"
+                      height="32"
+                      fill="none"
+                      xml={Xml.FacebookIcon}
+                      style={{marginHorizontal: 1}}
+                    />
           </TouchableOpacity>
           <TouchableOpacity style={styles.iconCircle}>
-            <Text>🔒</Text>
+            <Iconsvg
+                      width="32"
+                      height="32"
+                      fill="none"
+                      xml={Xml.FingerPrint}
+                      style={{marginHorizontal: 1}}
+                    />
           </TouchableOpacity>
         </View>
         <Text style={styles.signUpText}>
