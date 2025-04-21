@@ -1,9 +1,17 @@
 import React from 'react';
-import {View, Text, StyleSheet, SafeAreaView, Image, TouchableOpacity} from 'react-native'; // Added TouchableOpacity
+import {
+  View,
+  Text,
+  StyleSheet,
+  SafeAreaView,
+  Image,
+  TouchableOpacity,
+} from 'react-native'; // Added TouchableOpacity
 import {COLORS} from '../../../src/constants/colors';
 import {Iconsvg, Xml} from '../../assets/svgicon';
 
-const HomeScreen = ({navigation}: {navigation: any}) => { // Added navigation prop
+const HomeScreen = ({navigation}: {navigation: any}) => {
+  // Added navigation prop
   return (
     <SafeAreaView style={styles.container}>
       <View
@@ -34,7 +42,7 @@ const HomeScreen = ({navigation}: {navigation: any}) => { // Added navigation pr
           height="32"
           viewBox="0 0 32 32"
           fill="none"
-          xml={Xml.Search}
+          xml={Xml.SearchIcon}
           style={{marginHorizontal: 1}}
         />
       </View>
@@ -143,19 +151,10 @@ const HomeScreen = ({navigation}: {navigation: any}) => { // Added navigation pr
             fill="none"
             xml={Xml.Record}
           />
-          <Text style={{fontSize: 10, color: COLORS.blue}}>Record</Text>
+          <Text style={{fontSize: 10, color: COLORS.blue, width: '100%'}}>
+            Record
+          </Text>
         </View>
-      </View>
-      <View style={{width: '100%', alignItems: 'center', bottom: 140}}>
-        <Image
-          source={require('../../../src/assets/images/Atchyut.png')}
-          style={{
-            width: 470, // Adjusted to fit the screen width
-            height: undefined, // Allow height to adjust proportionally
-            aspectRatio: 16 / 9, // Maintain aspect ratio
-            resizeMode: 'contain', // Ensure the image is fully visible
-          }}
-        />
       </View>
       <View
         style={{
@@ -174,7 +173,8 @@ const HomeScreen = ({navigation}: {navigation: any}) => { // Added navigation pr
           }}>
           Specialties
         </Text>
-        <TouchableOpacity onPress={() => navigation.navigate('SpecialitiesScreen')}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('SpecialitiesScreen')}>
           <Text
             style={{
               color: COLORS.blue,
@@ -262,7 +262,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: COLORS.white,
-    paddingTop: 220, // Increased paddingTop to move content down
+    paddingTop: 10, // Adjusted padding to align the screen
   },
   topIcons: {
     flexDirection: 'row',

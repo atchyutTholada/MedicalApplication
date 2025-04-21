@@ -21,10 +21,10 @@ const specialities = [
   {id: '8', name: 'Orthopedics', icon: Xml.Orthopedics},
 ];
 
-const SpecialitiesScreen = () => {
+const SpecialitiesScreen = ({navigation}) => {
   const renderSpeciality = ({item}: {item: any}) => (
     <TouchableOpacity style={styles.specialityCard}>
-      <Iconsvg xml={item.icon} width="140" height="140" /> {/* Increased size */}
+      <Iconsvg xml={item.icon} width="150" height="105" /> {/* Increased size */}
     </TouchableOpacity>
   );
 
@@ -32,7 +32,7 @@ const SpecialitiesScreen = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.headerTopRow}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
             <Iconsvg xml={Xml.Header.back} width="24" height="24" />
           </TouchableOpacity>
         </View>
@@ -72,7 +72,9 @@ const SpecialitiesScreen = () => {
             xml={Xml.FilterImage}
           />
         </View>
-        <Text style={styles.doctorsText}>Doctors</Text>
+        <View>
+          <Text style={styles.doctorsText}>Doctors</Text> {/* Ensure text is wrapped in <Text> */}
+        </View>
       </View>
       <View style={styles.separator} />
       <FlatList
@@ -82,6 +84,9 @@ const SpecialitiesScreen = () => {
         numColumns={2}
         columnWrapperStyle={styles.columnWrapper}
         contentContainerStyle={styles.specialitiesList}
+        ListEmptyComponent={() => (
+          <Text style={{textAlign: 'center', marginTop: 20}}>No specialities available</Text>
+        )} // Fixed ListEmptyComponent syntax
       />
     </View>
   );
@@ -195,7 +200,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    width: '38%', // Slightly increased width to reduce gaps
+    width: '25%', 
+    bottom:10// Slightly increased width to reduce gaps
   },
   specialityText: {
     marginTop: 10,
